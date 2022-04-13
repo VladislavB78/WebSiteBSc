@@ -3,7 +3,7 @@ package com.example.WebSiteCoursework.entities;
 import javax.persistence.*;
 
 @Entity
-public class MyTable {
+public class TablesForSale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

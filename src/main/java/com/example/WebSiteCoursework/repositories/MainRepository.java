@@ -1,7 +1,11 @@
 package com.example.WebSiteCoursework.repositories;
 
-import com.example.WebSiteCoursework.entities.MyTable;
+import com.example.WebSiteCoursework.entities.TablesForSale;
 import org.springframework.data.repository.CrudRepository;
 
-public interface MainRepository extends CrudRepository<MyTable, Integer> {
+import java.util.List;
+
+public interface MainRepository extends CrudRepository<TablesForSale, Integer> {
+
+    List<TablesForSale> findByType (int type);
 }

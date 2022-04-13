@@ -17,47 +17,13 @@
 </head>
 <body>
 
-<header>
-    <div class="p-3 bg-dark text-white">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+<header th:insert="blocks/header :: header-index"></header>
 
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="/" class="nav-link px-2 text-secondary">Каталог</a></li>
-                    <li><a href="/cart" class="nav-link px-2 text-white">Корзина</a></li>
-                    <li><a href="/about" class="nav-link px-2 text-white">О компании</a></li>
-                </ul>
-
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">Войти</button>
-                    <button type="button" class="btn btn-warning">Зарегистрироваться</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
 <main>
-    <div class="container">
-        <h2 class="mt-4 d-flex flex-wrap align-items-center justify-content-center">Каталог</h2>
-
-        <div class="row mb-3">
-            <div class="col-md-6 themed-grid-col">
-                <div class=" d-flex flex-wrap align-items-center justify-content-center">
-                    <a href="/kitchen-tables" class="nav-link px-2">
-                        <img src="/imgs/kitchenTable.jpg" alt="Кухонные столы" width="400" height="400">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 themed-grid-col">
-                <div class="d-flex flex-wrap align-items-center justify-content-center">
-                    <a href="/writing-tables" class="nav-link px-2">
-                        <img src="/imgs/writingDesk.jpg" alt="Письменные столы" width="400" height="400">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <div th:insert="blocks/album :: album-index"></div>
 </main>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+
 </body>
 </html>

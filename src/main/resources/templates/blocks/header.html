@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="header-index">
+    <div class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" class="nav-link px-2 text-secondary">Каталог</a></li>
+                    <li><a href="/cart" class="nav-link px-2 text-white">Корзина</a></li>
+                    <li><a href="/about" class="nav-link px-2 text-white">О компании</a></li>
+                </ul>
+
+                <div class="text-end">
+                    <button type="button" class="btn btn-warning">Профиль</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="header-other">
+    <div class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" class="nav-link px-2 text-white">Каталог</a></li>
+                    <li><a href="/cart" class="nav-link px-2 text-white">Корзина</a></li>
+                    <li><a href="/about" class="nav-link px-2 text-white">О компании</a></li>
+                </ul>
+
+                <div class="text-end">
+                    <button type="button" class="btn btn-warning">Профиль</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
