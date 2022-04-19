@@ -18,23 +18,25 @@
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div th:each="tfs : ${tablesForSale}" class="col">
+                <div th:each="mp : ${mainProduct}" class="col">
                     <div class="card shadow-sm">
-                        <a th:href="'/table/' + ${tfs.id}">
-                            <img src="#" alt="Фото стола" width="420" height="225">
+                        <a th:href="'/product/' + ${mp.id}">
+                            <img th:src="${mp.img_address}" alt="Фото стола" style="width:100%">
                         </a>
                         <div class="card-body">
-                            <p th:text="${tfs.name}" class="card-text"></p>
-                            <p th:text="${tfs.price}" class="card-text"></p>
+                            <p th:text="${mp.name}"class="card-text"></p>
+                            <p th:text="${mp.price} + ' &#8381;'" class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">В корзину</button>
+<!--                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>-->
+                                    <a class="btn btn-sm btn-outline-secondary" th:href="'/product/' + ${mp.id}">Подробнее</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div th:insert="blocks/modal :: modal-add"></div>
         </div>
     </div>
 </div>
@@ -51,23 +53,55 @@
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div th:each="tfs : ${tablesForSale}" class="col">
+                <div th:each="mp : ${mainProduct}" class="col">
                     <div class="card shadow-sm">
-                        <a th:href="'/table/' + ${tfs.id}">
-                            <img src="#" alt="Фото стола" width="420" height="225">
+                        <a th:href="'/product/' + ${mp.id}">
+                            <img th:src="${mp.img_address}" alt="Фото стола" style="width:100%">
                         </a>
                         <div class="card-body">
-                            <p th:text="${tfs.name}" class="card-text"></p>
-                            <p th:text="${tfs.price}" class="card-text"></p>
+                            <p th:text="${mp.name}" class="card-text"></p>
+                            <p th:text="${mp.price} + ' &#8381;'" class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">В корзину</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div th:insert="blocks/modal :: modal-add"></div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="album-product">
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light" th:text="${title}"></h1>
+            </div>
+        </div>
+    </section>
+    <div class="album py-5 bg-light">
+        <div class="container" th:each="mp : ${mainProduct}">
+            <div class="row g-3">
+                <div  class="col col-md-8">
+                    <img th:src="${mp.img_address}" alt="Фото стола" style="width:7 0%">
+                </div>
+                <div  class="col col-md-4">
+                    <form>
+                        <h2 th:text="${mp.name}" class="card-text"></h2><br>
+                        <p th:text="${mp.price} + ' &#8381;'" class="card-text"></p><br><br>
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-5">
+                <h1>Описание</h1>
+                <textarea th:text="${mp.text_about}" readonly rows="3" cols="50" style="resize:none; background-color:rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) !important; border:0px; outline:none; cursor: default;"></textarea>
+            </div>
+            <div th:insert="blocks/modal :: modal-add"></div>
         </div>
     </div>
 </div>
