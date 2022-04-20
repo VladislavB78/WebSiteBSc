@@ -1,38 +1,47 @@
 package com.example.WebSiteCoursework.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class MainProduct {
 
-    public MainProduct() {
-    }
-
-    public MainProduct(String name, double price, int type, String text_about, String img_address) {
-        this.name = name;
-        this.price = price;
-        this.type = type;
-        this.text_about = text_about;
-        this.img_address = img_address;
-    }
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "mp_id")
     private Integer id;
 
     private String name;
     private double price;
-    private int type;
     private String text_about;
     private String img_address;
 
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "type")
+    private ProductType type;
+
+    @OneToMany(mappedBy = "main_product" , cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MainOrder> mainOrders = new ArrayList<>();
+
+
+    /* Constructors */
+    public MainProduct() {}
+
+    public MainProduct(String name, double price, String text_about, String img_address) {
+        this.name = name;
+        this.price = price;
+        this.text_about = text_about;
+        this.img_address = img_address;
+    }
+
+
+    /* Getters and Setters */
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -40,6 +49,7 @@ public class MainProduct {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -47,20 +57,15 @@ public class MainProduct {
     public double getPrice() {
         return price;
     }
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
-    public int getType() {
-        return type;
-    }
-    public void setType(int type) {
-        this.type = type;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getText_about() {
         return text_about;
     }
+
     public void setText_about(String text_about) {
         this.text_about = text_about;
     }
@@ -68,7 +73,24 @@ public class MainProduct {
     public String getImg_address() {
         return img_address;
     }
-    public void setImg_address(String text_about) {
+
+    public void setImg_address(String img_address) {
         this.img_address = img_address;
+    }
+
+    public ProductType getType() {
+        return type;
+    }
+
+    public void setType(ProductType type) {
+        this.type = type;
+    }
+
+    public List<MainOrder> getOrders() {
+        return mainOrders;
+    }
+
+    public void setOrders(List<MainOrder> mainOrders) {
+        this.mainOrders = mainOrders;
     }
 }

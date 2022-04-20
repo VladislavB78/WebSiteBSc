@@ -36,7 +36,6 @@
                     </div>
                 </div>
             </div>
-            <div th:insert="blocks/modal :: modal-add"></div>
         </div>
     </div>
 </div>
@@ -63,14 +62,14 @@
                             <p th:text="${mp.price} + ' &#8381;'" class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>
+<!--                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>-->
+                                    <a class="btn btn-sm btn-outline-secondary" th:href="'/product/' + ${mp.id}">Подробнее</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div th:insert="blocks/modal :: modal-add"></div>
         </div>
     </div>
 </div>
@@ -91,15 +90,16 @@
                 </div>
                 <div  class="col col-md-4">
                     <form>
-                        <h2 th:text="${mp.name}" class="card-text"></h2><br>
-                        <p th:text="${mp.price} + ' &#8381;'" class="card-text"></p><br><br>
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>
+                        <h1 th:text="${mp.name}" th:value="${mp.name}" class="card-text"></h1>
+                        <p th:text="${mp.price} + ' &#8381;'" th:value="${mp.price}" class="card-text mt-3 fs-4"></p>
+                        <p th:value="${mp.id}"></p>
+                        <button type="button" class="btn btn-sm btn-outline-primary fs-5" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>
+                        <div class="mt-5">
+                            <h3>Описание</h3>
+                            <textarea th:text="${mp.text_about}" readonly rows="3" cols="50" style="resize:none; background-color:rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) !important; border:0px; outline:none;"></textarea>
+                        </div>
                     </form>
                 </div>
-            </div>
-            <div class="mt-5">
-                <h1>Описание</h1>
-                <textarea th:text="${mp.text_about}" readonly rows="3" cols="50" style="resize:none; background-color:rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) !important; border:0px; outline:none; cursor: default;"></textarea>
             </div>
             <div th:insert="blocks/modal :: modal-add"></div>
         </div>

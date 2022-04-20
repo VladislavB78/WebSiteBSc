@@ -35,7 +35,7 @@ public class MainController {
     public String kitchenTables (Model model) {
         model.addAttribute("title", "Кухонные столы");
 
-        Iterable<MainProduct> mainProduct = mainProductRepository.findByType(1);
+        Iterable<MainProduct> mainProduct = mainProductRepository.findByType_Id(1);
         model.addAttribute("mainProduct", mainProduct);
 
         return "kitchen-tables.html";
@@ -45,7 +45,7 @@ public class MainController {
     public String writingTables (Model model) {
         model.addAttribute("title", "Письменные столы");
 
-        Iterable<MainProduct> mainProduct = mainProductRepository.findByType(2);
+        Iterable<MainProduct> mainProduct = mainProductRepository.findByType_Id(2);
         model.addAttribute("mainProduct", mainProduct);
 
         return "writing-tables.html";
