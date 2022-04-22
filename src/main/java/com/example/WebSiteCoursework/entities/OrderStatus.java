@@ -1,7 +1,6 @@
 package com.example.WebSiteCoursework.entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,16 +14,14 @@ public class OrderStatus {
     private String status_name;
 
     @OneToMany(mappedBy = "order_status" , cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MainOrder> mainOrders = new ArrayList<>();
+    private List<MyOrder> myOrders;
 
 
     /* Constructors */
     public OrderStatus() {}
 
-    public OrderStatus(Integer id, String status_name, List<MainOrder> mainOrders) {
-        this.id = id;
+    public OrderStatus(String status_name) {
         this.status_name = status_name;
-        this.mainOrders = mainOrders;
     }
 
 
@@ -45,11 +42,11 @@ public class OrderStatus {
         this.status_name = status_name;
     }
 
-    public List<MainOrder> getOrders() {
-        return mainOrders;
+    public List<MyOrder> getMyOrders() {
+        return myOrders;
     }
 
-    public void setOrders(List<MainOrder> mainOrders) {
-        this.mainOrders = mainOrders;
+    public void setMyOrders(List<MyOrder> myOrders) {
+        this.myOrders = myOrders;
     }
 }

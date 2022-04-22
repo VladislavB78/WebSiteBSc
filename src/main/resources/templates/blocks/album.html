@@ -18,18 +18,18 @@
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div th:each="mp : ${mainProduct}" class="col">
+                <div th:each="p : ${product}" class="col">
                     <div class="card shadow-sm">
-                        <a th:href="'/product/' + ${mp.id}">
-                            <img th:src="${mp.img_address}" alt="Фото стола" style="width:100%">
+                        <a th:href="'/product/' + ${p.id}">
+                            <img th:src="${p.img_address}" alt="Фото стола" style="width:100%">
                         </a>
                         <div class="card-body">
-                            <p th:text="${mp.name}"class="card-text"></p>
-                            <p th:text="${mp.price} + ' &#8381;'" class="card-text"></p>
+                            <p th:text="${p.name}"class="card-text"></p>
+                            <p th:text="${p.price} + ' &#8381;'" class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
 <!--                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>-->
-                                    <a class="btn btn-sm btn-outline-secondary" th:href="'/product/' + ${mp.id}">Подробнее</a>
+                                    <a class="btn btn-sm btn-outline-secondary" th:href="'/product/' + ${p.id}">Подробнее</a>
                                 </div>
                             </div>
                         </div>
@@ -52,18 +52,18 @@
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div th:each="mp : ${mainProduct}" class="col">
+                <div th:each="p : ${product}" class="col">
                     <div class="card shadow-sm">
-                        <a th:href="'/product/' + ${mp.id}">
-                            <img th:src="${mp.img_address}" alt="Фото стола" style="width:100%">
+                        <a th:href="'/product/' + ${p.id}">
+                            <img th:src="${p.img_address}" alt="Фото стола" style="width:100%">
                         </a>
                         <div class="card-body">
-                            <p th:text="${mp.name}" class="card-text"></p>
-                            <p th:text="${mp.price} + ' &#8381;'" class="card-text"></p>
+                            <p th:text="${p.name}" class="card-text"></p>
+                            <p th:text="${p.price} + ' &#8381;'" class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
 <!--                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>-->
-                                    <a class="btn btn-sm btn-outline-secondary" th:href="'/product/' + ${mp.id}">Подробнее</a>
+                                    <a class="btn btn-sm btn-outline-secondary" th:href="'/product/' + ${p.id}">Подробнее</a>
                                 </div>
                             </div>
                         </div>
@@ -83,20 +83,21 @@
         </div>
     </section>
     <div class="album py-5 bg-light">
-        <div class="container" th:each="mp : ${mainProduct}">
+        <div class="container" th:each="p : ${product}">
             <div class="row g-3">
                 <div  class="col col-md-8">
-                    <img th:src="${mp.img_address}" alt="Фото стола" style="width:7 0%">
+                    <img th:src="${p.img_address}" alt="Фото стола" style="width:7 0%">
                 </div>
                 <div  class="col col-md-4">
-                    <form>
-                        <h1 th:text="${mp.name}" th:value="${mp.name}" class="card-text"></h1>
-                        <p th:text="${mp.price} + ' &#8381;'" th:value="${mp.price}" class="card-text mt-3 fs-4"></p>
-                        <p th:value="${mp.id}"></p>
-                        <button type="button" class="btn btn-sm btn-outline-primary fs-5" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>
+                    <form method="post">
+                        <h1 th:text="${p.name}" th:value="${p.name}" name="name" class="card-text"></h1>
+                        <p th:text="${p.price} + ' &#8381;'" th:value="${p.price}" id="price" class="card-text mt-3 fs-4"></p>
+                        <p th:value="${p.id}" id="id"></p>
+                        <button type="submit" class="btn btn-sm btn-outline-primary fs-5" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>
+<!--                        <button type="submit" class="btn btn-sm btn-outline-primary fs-5">В корзину</button>-->
                         <div class="mt-5">
                             <h3>Описание</h3>
-                            <textarea th:text="${mp.text_about}" readonly rows="3" cols="50" style="resize:none; background-color:rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) !important; border:0px; outline:none;"></textarea>
+                            <textarea th:text="${p.text_about}" readonly rows="3" cols="50" style="resize:none; background-color:rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) !important; border:0px; outline:none;"></textarea>
                         </div>
                     </form>
                 </div>

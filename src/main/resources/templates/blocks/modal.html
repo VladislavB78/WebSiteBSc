@@ -9,9 +9,10 @@
           <h5 class="modal-title" id="exampleModalLabel">Товар добавлен в корзину</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <p th:text="${mp.name}"></p>
-        </div>
+        <form method="post" class="modal-body">
+          <p th:text="${p.name}"></p>
+          <input th:value="${p.id}" name="id" type="hidden">
+        </form>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ок</button>
           <button type="button" class="btn btn-primary" onclick="location.href='/cart';">Перейти в корзину</button>

@@ -1,7 +1,6 @@
 package com.example.WebSiteCoursework.entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,15 +15,15 @@ public class ProductType {
 
 
     @OneToMany(mappedBy = "type" , cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MainProduct> mainProducts = new ArrayList<>();
+    private List<Product> products;
 
-    public void addMainProduct(MainProduct mainProduct) {
-        this.mainProducts.add(mainProduct);
-        mainProduct.setType(this);
+    public void addMainProduct(Product product) {
+        this.products.add(product);
+        product.setType(this);
     }
-    public void removeMainProduct(MainProduct mainProduct) {
-        this.mainProducts.remove(mainProduct);
-        mainProduct.setType(null);
+    public void removeMainProduct(Product product) {
+        this.products.remove(product);
+        product.setType(null);
     }
 
 
@@ -51,10 +50,10 @@ public class ProductType {
         this.typeName = typeName;
     }
 
-    public List<MainProduct> getMainProducts() {
-        return mainProducts;
+    public List<Product> getProducts() {
+        return products;
     }
-    public void setMainProduct(List<MainProduct> mainProduct) {
-        this.mainProducts = mainProduct;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

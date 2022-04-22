@@ -3,7 +3,7 @@ package com.example.WebSiteCoursework.entities;
 import javax.persistence.*;
 
 @Entity
-public class MainOrder {
+public class MyOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,8 +15,8 @@ public class MainOrder {
     private Customer customer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "main_product")
-    private MainProduct main_product;
+    @JoinColumn(name = "product")
+    private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_status")
@@ -24,12 +24,11 @@ public class MainOrder {
 
 
     /* Constructors */
-    public MainOrder() {}
+    public MyOrder() {}
 
-    public MainOrder(Integer id, Customer customer, MainProduct main_product, OrderStatus order_status) {
-        this.id = id;
+    public MyOrder(Customer customer, Product product, OrderStatus order_status) {
         this.customer = customer;
-        this.main_product = main_product;
+        this.product = product;
         this.order_status = order_status;
     }
 
@@ -51,12 +50,12 @@ public class MainOrder {
         this.customer = customer;
     }
 
-    public MainProduct getMain_product() {
-        return main_product;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setMain_product(MainProduct main_product) {
-        this.main_product = main_product;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public OrderStatus getOrder_status() {

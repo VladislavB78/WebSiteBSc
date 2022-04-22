@@ -1,15 +1,14 @@
 package com.example.WebSiteCoursework.entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class MainProduct {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mp_id")
+    @Column(name = "p_id")
     private Integer id;
 
     private String name;
@@ -22,18 +21,19 @@ public class MainProduct {
     @JoinColumn(name = "type")
     private ProductType type;
 
-    @OneToMany(mappedBy = "main_product" , cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MainOrder> mainOrders = new ArrayList<>();
+    @OneToMany(mappedBy = "product" , cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MyOrder> myOrders;
 
 
     /* Constructors */
-    public MainProduct() {}
+    public Product() {}
 
-    public MainProduct(String name, double price, String text_about, String img_address) {
+    public Product(String name, double price, ProductType type, String text_about, String img_address) {
         this.name = name;
         this.price = price;
         this.text_about = text_about;
         this.img_address = img_address;
+        this.type = type;
     }
 
 
@@ -86,11 +86,11 @@ public class MainProduct {
         this.type = type;
     }
 
-    public List<MainOrder> getOrders() {
-        return mainOrders;
+    public List<MyOrder> getMyOrders() {
+        return myOrders;
     }
 
-    public void setOrders(List<MainOrder> mainOrders) {
-        this.mainOrders = mainOrders;
+    public void setMyOrders(List<MyOrder> myOrders) {
+        this.myOrders = myOrders;
     }
 }
