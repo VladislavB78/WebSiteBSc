@@ -107,15 +107,16 @@
                     <span th:text="${#lists.size(product)}" class="badge bg-primary rounded-pill">Count</span>
                 </h4>
                 <ul class="list-group mb-3">
-                    <li th:each="p : ${product}" class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 th:text="${p.name}" class="my-0">Product name</h6>
-                        </div>
-                        <span th:text="${p.price}" class="text-muted">Price</span>
-                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    <li th:each="p, iter : ${product}" class="list-group-item d-flex justify-content-between lh-sm">
+                        <form method="post" class="row">
+                            <input th:value="${iter.count}" th:name="o_id" type="hidden">
+                            <div class="col-6" th:text="${p.name}"></div>
+                            <div th:text="${p.price}" class="text-muted col-4">Price</div>
+                            <button type="submit" class="btn btn-close col-2 ps-3" aria-label="Close"></button>
+                        </form>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        <span>ИТОГ</span>
+                        <span th:text="${#lists.size(product) == 0 ? 'Пустая корзина :(' : 'ИТОГ'}"></span>
                         <strong th:text="${#aggregates.sum(product.![price])}">Total</strong>
                     </li>
                 </ul>

@@ -28,7 +28,6 @@
                             <p th:text="${p.price} + ' &#8381;'" class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-<!--                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>-->
                                     <a class="btn btn-sm btn-outline-secondary" th:href="'/product/' + ${p.id}">Подробнее</a>
                                 </div>
                             </div>
@@ -62,7 +61,6 @@
                             <p th:text="${p.price} + ' &#8381;'" class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-<!--                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>-->
                                     <a class="btn btn-sm btn-outline-secondary" th:href="'/product/' + ${p.id}">Подробнее</a>
                                 </div>
                             </div>
@@ -78,7 +76,7 @@
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light" th:text="${title}"></h1>
+                <h1 class="fw-light">Детальнее</h1>
             </div>
         </div>
     </section>
@@ -88,11 +86,10 @@
                 <div  class="col col-md-8">
                     <img th:src="${p.img_address}" alt="Фото стола" style="width:7 0%">
                 </div>
-                <div  class="col col-md-4">
+                <div class="col col-md-4">
                     <form method="post">
-                        <h1 th:text="${p.name}" th:value="${p.name}" name="name" class="card-text"></h1>
-                        <p th:text="${p.price} + ' &#8381;'" th:value="${p.price}" id="price" class="card-text mt-3 fs-4"></p>
-                        <p th:value="${p.id}" id="id"></p>
+                        <h1 th:text="${p.name}" class="card-text"></h1>
+                        <p th:text="${p.price} + ' &#8381;'" class="card-text mt-3 fs-4"></p>
                         <button type="submit" class="btn btn-sm btn-outline-primary fs-5" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>
 <!--                        <button type="submit" class="btn btn-sm btn-outline-primary fs-5">В корзину</button>-->
                         <div class="mt-5">
@@ -106,29 +103,5 @@
         </div>
     </div>
 </div>
-
-<!--<div th:fragment="album-index-alt">-->
-    <!--    <div class="container">-->
-    <!--        <h2 class="mt-4 d-flex flex-wrap align-items-center justify-content-center">Каталог</h2>-->
-
-    <!--        <div class="row mb-3">-->
-    <!--            <div class="col-md-6 themed-grid-col">-->
-    <!--                <div class=" d-flex flex-wrap align-items-center justify-content-center">-->
-    <!--                    <a href="/kitchen-tables" class="nav-link px-2">-->
-    <!--                        <img src="/imgs/kitchenTable.jpg" alt="Кухонные столы" width="400" height="400">-->
-    <!--                    </a>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--            <div class="col-md-6 themed-grid-col">-->
-    <!--                <div class="d-flex flex-wrap align-items-center justify-content-center">-->
-    <!--                    <a href="/writing-tables" class="nav-link px-2">-->
-    <!--                        <img src="/imgs/writingDesk.jpg" alt="Письменные столы" width="400" height="400">-->
-    <!--                    </a>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-<!--</div>-->
-
 </body>
 </html>

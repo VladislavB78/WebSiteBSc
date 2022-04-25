@@ -3,9 +3,11 @@ package com.example.WebSiteCoursework.repositories;
 import com.example.WebSiteCoursework.entities.Product;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     List<Product> findByType_Id(Integer id);

@@ -16,7 +16,7 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     public List<Customer> getCustomer(Integer id) {
-        Optional<Customer> customers = customerRepository.findById(1);
+        Optional<Customer> customers = customerRepository.findById(id);
         ArrayList<Customer> res = new ArrayList<>();
         customers.ifPresent(res::add);
         return res;

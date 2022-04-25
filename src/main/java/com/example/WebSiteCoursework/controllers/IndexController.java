@@ -14,19 +14,19 @@ public class IndexController {
 
 
     @GetMapping("/")
-    public String home (Model model) {
+    public String home(Model model) {
         model.addAttribute("product", productService.getAllProducts());
         return "index.html";
     }
 
     @GetMapping("/kitchen-tables")
-    public String kitchenTables (Model model) {
+    public String kitchenTables(Model model) {
         model.addAttribute("product", productService.getProductsByType(1));
         return "kitchen-tables.html";
     }
 
     @GetMapping("/writing-tables")
-    public String writingTables (Model model) {
+    public String writingTables(Model model) {
         model.addAttribute("product", productService.getProductsByType(2));
         return "writing-tables.html";
     }
