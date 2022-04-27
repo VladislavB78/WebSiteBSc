@@ -34,6 +34,10 @@ public class ProductService {
         return productRepository.findByMyOrders_Customer_Id(id);
     }
 
+    public void addProduct(Product product) {
+        productRepository.save(product);
+    }
+
     public void deleteProduct(Integer id) {
         productRepository.deleteById(id);
     }

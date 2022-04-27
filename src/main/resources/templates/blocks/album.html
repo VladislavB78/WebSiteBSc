@@ -120,14 +120,12 @@
             <div class="row g-3">
                 <div  class="col col-md-8">
                     <img th:src="${p.img_address}" alt="Фото стола" style="width:70%">
-                    <input th:value="${p.img_address}" th:name="img_address">
                 </div>
                 <div class="col col-md-4">
                     <form method="post">
                         <input th:value="${p.name}" th:name="name" class="card-text">
                         <input th:value="${p.price}" th:name="price" class="card-text mt-3 fs-4">
-                        <!--                        <button type="submit" class="btn btn-sm btn-outline-primary fs-5" data-bs-toggle="modal" data-bs-target="#modalAddToCart">В корзину</button>-->
-                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        <input th:value="${p.img_address}" th:name="img_address">
                         <div class="mt-5">
                             <h3>Описание</h3>
                             <textarea th:text="${p.text_about}" th:name="text_about" rows="3" cols="50" style="background-color:rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) !important;"></textarea>
@@ -136,6 +134,7 @@
                             <button type="submit" class="btn btn-sm btn-outline-primary fs-5" th:name="edit">Изменить</button>
                             <button type="submit" class="btn btn-sm btn-outline-danger fs-5" th:name="del">Удалить</button>
                         </div>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                     </form>
                 </div>
             </div>

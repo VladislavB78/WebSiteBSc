@@ -31,10 +31,11 @@ public class ProductEditController {
         Product product = productService.getProduct(p_id).get(0);
         product.setImg_address(img_address);
         product.setName(name);
-        product.setPrice(Integer.parseInt(price));
+        product.setPrice(Double.parseDouble(price));
         product.setText_about(text_about);
+        productService.addProduct(product);
 
-        return "redirect:http://localhost:8080/product-edit";
+        return "redirect:http://localhost:8080/product-edit/" + p_id.toString();
     }
 
     @PostMapping(params = "del")
