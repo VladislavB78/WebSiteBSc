@@ -16,23 +16,23 @@ public class IndexController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("product", productService.getAllProducts());
-        return "index.html";
+        return "index";
     }
 
     @GetMapping("/kitchen-tables")
     public String kitchenTables(Model model) {
         model.addAttribute("product", productService.getProductsByType(1));
-        return "kitchen-tables.html";
+        return "kitchen-tables";
     }
 
     @GetMapping("/writing-tables")
     public String writingTables(Model model) {
         model.addAttribute("product", productService.getProductsByType(2));
-        return "writing-tables.html";
+        return "writing-tables";
     }
 
     @GetMapping("/about")
     public String about () {
-        return "about.html";
+        return "about";
     }
 }

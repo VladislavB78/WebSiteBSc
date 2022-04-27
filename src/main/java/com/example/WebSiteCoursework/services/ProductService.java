@@ -30,5 +30,11 @@ public class ProductService {
         return productRepository.findByType_Id(id);
     }
 
-    public List<Product> getProductsByCustomer(Integer id){return productRepository.findByMyOrders_Customer_Id(id);}
+    public List<Product> getProductsByCustomer(Integer id) {
+        return productRepository.findByMyOrders_Customer_Id(id);
+    }
+
+    public void deleteProduct(Integer id) {
+        productRepository.deleteById(id);
+    }
 }

@@ -11,6 +11,7 @@ import com.example.WebSiteCoursework.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,4 +38,6 @@ public class MyOrderService {
     public void deleteMyOrder(Integer id) {
         myOrderRepository.deleteById(id);
     }
+
+    public List<MyOrder> getMyOrderByCustomer(Integer id) { return myOrderRepository.findByCustomer_Id(id);}
 }

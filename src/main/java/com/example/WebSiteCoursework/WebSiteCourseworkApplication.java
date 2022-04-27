@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Collections;
+
 @SpringBootApplication
 public class WebSiteCourseworkApplication {
 
@@ -34,19 +36,22 @@ public class WebSiteCourseworkApplication {
 			pr.save(new Product("Бомбей", 35890, pt2, "Производитель: TetChair (Тэтчер)\nМатериал: Дерево\nРазмер:900х600х760", "../images/bombei_2.jpg"));
 
 			pr.save(new Product("Bosco", 17590, pt1, "Производитель: TetChair (Тэтчер)\nМатериал: МДФ, бук\nРазмер:900x750x900", "../images/bosco_1.jpg"));
-//			pr.save(new MainProduct("Navarrese", 30690, pt1, "Производитель: TetChair (Тэтчер)\nМатериал: Массив\nРазмер:900x760x900", "../images/navarrese_1.jpg"));
+			pr.save(new Product("Navarrese", 30690, pt1, "Производитель: TetChair (Тэтчер)\nМатериал: Массив\nРазмер:900x760x900", "../images/navarrese_1.jpg"));
 			pr.save(new Product("Калгари", 9300, pt2, "Производитель: МебельГрад\nМатериал: ЛДСП, МДФ, массив\nРазмер:1200х540х770", "../images/kalgari_2.png"));
 			pr.save(new Product("Базис 3", 7360, pt2, "Производитель: Моби\nМатериал: ЛДСП\nРазмер:1100х600х840", "../images/bazis3_2.jpg"));
 
 			OrderStatus os = new OrderStatus("Ожидает отправки");
 			ost.save(os);
 
-			Customer c = new Customer("Иван", "Иванов", "test@test.com", "123445 Город Улица", "1", "1");
-			cr.save(c);
+//			Customer c = new Customer("Иван", "Иванов", "test@test.com", "123445 Город Улица", "1", "1");
+//			cr.save(c);
 
-			Product mp = new Product("Navarrese", 30690, pt1, "Производитель: TetChair (Тэтчер)\nМатериал: Массив\nРазмер:900x760x900", "../images/navarrese_1.jpg");
-			pr.save(mp);
-			mor.save(new MyOrder(c, mp, os));
+//			Product mp = new Product("Navarrese", 30690, pt1, "Производитель: TetChair (Тэтчер)\nМатериал: Массив\nРазмер:900x760x900", "../images/navarrese_1.jpg");
+//			pr.save(mp);
+//			mor.save(new MyOrder(c, mp, os));
+
+			cr.save(new Customer("a", "1", true, Collections.singleton(Role.ADMIN)));
+			cr.save(new Customer("", "", true, Collections.singleton(Role.CUSTOMER)));
 		};
 	}
 

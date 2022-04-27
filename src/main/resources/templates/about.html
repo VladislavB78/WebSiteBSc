@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,7 +17,16 @@
     <!--    <link href="headers.css" rel="stylesheet">-->
 </head>
 <body>
+
 <header th:insert="blocks/header :: header-other"></header>
+
+<main>
+    <div>
+        Здесь должно было быть описание, но его нет :)
+    </div>
+</main>
+
 <footer th:insert="blocks/footer :: footer"></footer>
+
 </body>
 </html>

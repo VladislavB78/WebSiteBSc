@@ -15,10 +15,18 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    public void addCustomer(Customer customer) {
+        customerRepository.save(customer);
+    }
+
     public List<Customer> getCustomer(Integer id) {
         Optional<Customer> customers = customerRepository.findById(id);
         ArrayList<Customer> res = new ArrayList<>();
         customers.ifPresent(res::add);
         return res;
+    }
+
+    public Customer findCustomerByUsername(String username) {
+        return customerRepository.findByUsername(username);
     }
 }
