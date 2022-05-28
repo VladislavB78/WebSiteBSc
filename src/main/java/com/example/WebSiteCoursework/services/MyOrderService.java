@@ -40,4 +40,8 @@ public class MyOrderService {
     }
 
     public List<MyOrder> getMyOrderByCustomer(Integer id) { return myOrderRepository.findByCustomer_Id(id);}
+
+    public void setOrderStatus_AwaitingShipment(Integer c_id) {
+        myOrderRepository.updateOrder_statusIdByCustomer_Id(2, c_id);
+    }
 }

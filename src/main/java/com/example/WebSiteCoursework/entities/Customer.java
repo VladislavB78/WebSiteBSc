@@ -35,13 +35,15 @@ public class Customer {
         this.roles = roles;
     }
 
-    public Customer(String first_name, String last_name, String email, String postal_address, String username, String password) {
+    public Customer(String first_name, String last_name, String email, String postal_address, String username, String password, boolean active, Set<Role> roles) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
         this.postal_address = postal_address;
         this.username = username;
         this.password = password;
+        this.active = active;
+        this.roles = roles;
     }
 
 

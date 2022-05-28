@@ -15,6 +15,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+
     public Iterable<Product> getAllProducts() {
         return productRepository.findAll();
     }
@@ -34,7 +35,14 @@ public class ProductService {
         return productRepository.findByMyOrders_Customer_Id(id);
     }
 
-    public void addProduct(Product product) {
+    public void addProduct(Integer p_id, String img_address, String name, String price, String text_about) {
+        Product product = getProduct(p_id).get(0);
+
+        product.setImg_address(img_address);
+        product.setName(name);
+        product.setPrice(Double.parseDouble(price));
+        product.setText_about(text_about);
+
         productRepository.save(product);
     }
 

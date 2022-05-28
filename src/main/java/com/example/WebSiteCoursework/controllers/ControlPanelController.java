@@ -25,18 +25,18 @@ public class ControlPanelController {
         return "/control-panel";
     }
 
-    @PostMapping
-    public String changeAlbum(@RequestParam(value = "btnRadio") String btnRadio, Model model) {
-
-        switch (btnRadio) {
-            case "r1":
-                model.addAttribute("product", productService.getAllProducts()); break;
-            case "r2":
-                model.addAttribute("product", productService.getProductsByType(1)); break;
-            case "r3":
-                model.addAttribute("product", productService.getProductsByType(2)); break;
-        }
-
-        return "/control-panel";
-    }
+//    @PostMapping
+//    public String changeAlbum(@RequestParam(value = "btnRadio") String btnRadio, Model model) {
+//
+//        switch (btnRadio) {
+//            case "r1":
+//                model.addAttribute("product", productService.getAllProducts()); break;
+//            case "r2":
+//                model.addAttribute("product", productService.getProductsByType(1)); break;
+//            case "r3":
+//                model.addAttribute("product", productService.getProductsByType(2)); break;
+//        }
+//
+//        return "/control-panel";
+//    }
 }
