@@ -35,13 +35,26 @@ public class MyOrderService {
         myOrderRepository.save(new MyOrder(c.get(), p.get(), os.get()));
     }
 
-    public void deleteMyOrder(Integer id) {
-        myOrderRepository.deleteById(id);
+    public void deleteMyOrder(Integer o_id) {
+        myOrderRepository.deleteById(o_id);
     }
 
-    public List<MyOrder> getMyOrderByCustomer(Integer id) { return myOrderRepository.findByCustomer_Id(id);}
+    public List<MyOrder> getMyOrderByCustomer(Integer c_id) { return myOrderRepository.findByCustomer_Id(c_id);}
 
-    public void setOrderStatus_AwaitingShipment(Integer c_id) {
-        myOrderRepository.updateOrder_statusIdByCustomer_Id(2, c_id);
+    public List<MyOrder> getMyOrdersByOrderNumber(String orderNumber) {
+        return myOrderRepository.findByOrderNumber(orderNumber);
+    }
+
+    public List<MyOrder> getOrderNumbers(Integer s_id) {
+        return myOrderRepository.findByOrderStatus_Id(s_id);
+    }
+
+    public void setOrderStatus_AwaitingShipment(Integer c_id, String orderNumber) {
+        myOrderRepository.updateOrderStatusIdAndOrderNumberByCustomer_Id(2,orderNumber, c_id);
+
+    }
+
+    public void setOrderStatus_Shipment(String orderNumber) {
+        myOrderRepository.updateOrderStatusIdByOrderNumber(3, orderNumber);
     }
 }

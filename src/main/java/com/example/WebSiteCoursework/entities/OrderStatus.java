@@ -13,7 +13,7 @@ public class OrderStatus {
 
     private String status_name;
 
-    @OneToMany(mappedBy = "order_status" , cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "orderStatus", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MyOrder> myOrders;
 
 

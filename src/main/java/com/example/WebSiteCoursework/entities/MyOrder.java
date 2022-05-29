@@ -19,19 +19,28 @@ public class MyOrder {
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_status")
-    private OrderStatus order_status;
+    @JoinColumn(name = "orderStatus")
+    private OrderStatus orderStatus;
+
+    @Column(name = "orderNumber")
+    private String orderNumber;
 
 
     /* Constructors */
     public MyOrder() {}
 
-    public MyOrder(Customer customer, Product product, OrderStatus order_status) {
+    public MyOrder(Customer customer, Product product, OrderStatus orderStatus) {
         this.customer = customer;
         this.product = product;
-        this.order_status = order_status;
+        this.orderStatus = orderStatus;
     }
 
+    public MyOrder(Customer customer, Product product, OrderStatus orderStatus, String orderNumber) {
+        this.customer = customer;
+        this.product = product;
+        this.orderStatus = orderStatus;
+        this.orderNumber = orderNumber;
+    }
 
     /* Getters and Setters */
     public Integer getId() {
@@ -58,11 +67,19 @@ public class MyOrder {
         this.product = product;
     }
 
-    public OrderStatus getOrder_status() {
-        return order_status;
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setOrder_status(OrderStatus order_status) {
-        this.order_status = order_status;
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 }

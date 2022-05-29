@@ -4,6 +4,7 @@ import com.example.WebSiteCoursework.services.CustomerService;
 import com.example.WebSiteCoursework.services.MyOrderService;
 import com.example.WebSiteCoursework.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@PreAuthorize("hasAuthority('ADMIN')" + "|| hasAuthority('CUSTOMER')")
 public class CartController {
 
     @Autowired
@@ -53,11 +55,13 @@ public class CartController {
         int c_id = customerService.findCustomerByUsername(currentPrincipalName).getId();
 
         customerService.editeProfileData(c_id, first_name, last_name, email, postal_address);
-        myOrderService.setOrderStatus_AwaitingShipment(c_id);
+
+        String orderNumber = c_id + "-" + System.currentTimeMillis()/1000L;
+        myOrderService.setOrderStatus_AwaitingShipment(c_id, orderNumber);
 
         model.addAttribute("product", productService.getProductsByCustomer(c_id));
         model.addAttribute("order", myOrderService.getMyOrderByCustomer(c_id));
-        model.addAttribute("order_code", c_id + "-" + System.currentTimeMillis()/1000L);
+        model.addAttribute("orderNumber", orderNumber);
 
         return "conformation-order";
     }

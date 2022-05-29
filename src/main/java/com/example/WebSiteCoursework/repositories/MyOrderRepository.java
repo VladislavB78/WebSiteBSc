@@ -17,6 +17,17 @@ public interface MyOrderRepository extends CrudRepository<MyOrder, Integer> {
 
     @Transactional
     @Modifying
-    @Query("update MyOrder m set m.order_status.id = ?1 where m.customer.id = ?2")
-    void updateOrder_statusIdByCustomer_Id(Integer s_id, Integer c_id);
+    @Query("update MyOrder m set m.orderStatus.id = ?1, m.orderNumber = ?2 where m.customer.id = ?3")
+    void updateOrderStatusIdAndOrderNumberByCustomer_Id(Integer s_id, String orderNumber, Integer c_id);
+
+    @Transactional
+    @Modifying
+    @Query("update MyOrder m set m.orderStatus.id = ?1 where m.orderNumber = ?2")
+    void updateOrderStatusIdByOrderNumber(Integer s_id, String orderNumber);
+
+    @Query("select m from MyOrder m where m.orderStatus.id = ?1")
+    List<MyOrder> findByOrderStatus_Id(Integer s_id);
+
+    @Query("select m from MyOrder m where m.orderNumber = ?1")
+    List<MyOrder> findByOrderNumber(String orderNumber);
 }
